@@ -1,0 +1,56 @@
+.login-container{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.5)
+        ),
+        url("https://wallpaperaccess.com/full/240306.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+.login-wrapper{
+    width: 25%;
+    padding: 20px;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.login-title{
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input{
+    flex: 1;
+    min-width: 40%;
+    margin: 10px 0px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.login-button{
+    width: 40%;
+    border: none;
+    padding: 15px 20px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    margin-left:30%;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.login-link{
+    margin: 5px 0px;
+    font-size: 12px;
+    font-weight: 600;
+}
