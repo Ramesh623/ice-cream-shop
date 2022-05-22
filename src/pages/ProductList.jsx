@@ -3,52 +3,84 @@ import Navbar from "../components/Navbar";
 import Products from "../components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import './ProductList.css';
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;    
+`;
+
+const Title = styled.h1`
+    margin: 20px;
+`;
+
+const FilterContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const Filter = styled.div`
+    margin: 20px;
+`;
+
+const FilterText = styled.span`
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+`;
+
+const Select = styled.select`
+    padding: 10px;
+    margin-right: 20px;
+`;
+
+const Option = styled.option`
+    
+`;
 
 const ProductList = () => {
   return (
-    <div className="productli-container">
+    <Container>
         <Announcement/>
         <Navbar/>
-        <h1 className="productli-title">Ice Creams</h1>
-        <div className="filter-container">
-            <div className="filter"><span className="filter-text">Filter Products:</span>
-            <select className="filter-seletect" id="fil1">
-                <option value="none" selected disabled hidden>Flavours</option>
-                <option value="vanila">Vanila</option>
-                <option value="choco">Chocolate</option>
-                <option value="cookies">Cookies N' Cream</option>
-                <option value="mintchoco">Mint Chocolate Cream</option>
-                <option value="strawberry">Strawberry</option>
-                <option value="buttered">Buttered Pecan</option>
-            </select>
+        <Title>Ice Creams</Title>
+        <FilterContainer>
+            <Filter><FilterText>Filter Products :</FilterText>
+            <Select>
+                <Option disabled selected>Flavour</Option>
+                <Option>Vanila</Option>
+                <Option>Chocolate</Option>
+                <Option>Cookies N' Cream</Option>
+                <Option>Mint Chocolate Cream</Option>
+                <Option>Strawberry</Option>
+                <Option>Buttered Pecan</Option>
+            </Select>
 
-            <select className="filter-seletect" id="fil2">
-                <option value="none" selected disabled hidden>Size</option>
-                <option value="size1">100 ml</option>
-                <option value="size2">150 ml</option>
-                <option value="size3">200 ml</option>
-                <option value="size4">300 ml</option>
-                <option value="size5">400 ml</option>
-            </select>
+            <Select>
+                <Option disabled selected>Size</Option>
+                <Option>100 ml</Option>
+                <Option>150 ml</Option>
+                <Option>200 ml</Option>
+                <Option>300 ml</Option>
+                <Option>400 ml</Option>
+            </Select>
             
-            </div>
-            <div className="filter"><span className="filter-text">Sort Products:</span>
-            <select className="filter-seletect" id="fil3">
-                <option value="none" selected>Newest</option>
-                <option value="sort1">Price (asc)</option>
-                <option value="sort2">Price (desc)</option>
-            </select>
+            </Filter>
+            <Filter><FilterText>Sort Products :</FilterText>
+            <Select>
+                <Option selected>Newest</Option>
+                <Option>Price (asc)</Option>
+                <Option>Price (desc)</Option>
+            </Select>
     
-            </div>
+            </Filter>
             
-        </div>
+        </FilterContainer>
         <Products/>
         <Newsletter/>
         <Footer/>      
-        
-    </div>
+    </Container>
   )
 }
 
-export default ProductList
+export default ProductList;

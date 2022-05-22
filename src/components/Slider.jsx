@@ -1,61 +1,121 @@
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
-import'./Slider.css';
-import sliderImg1 from '../Images/pic1.jpg'; 
+import { useState } from "react";
+import styled from "styled-components";
+import { sliderItems } from "../data";
+
+const Container = styled.div`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+`;
+
+const Arrow = styled.div`
+    width: 50px;
+    height: 50px;
+    background-color: rgb(204, 64, 139);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: ${props=>props.direction === "left" && "15px"};
+    right: ${props=>props.direction === "right" && "15px"};
+    margin: auto;
+    cursor : pointer;
+    opacity: 0.5;
+    z-index: 2;
+`;
+
+const Wrapper = styled.div`
+    height: 100%;
+    display: flex;
+    transition: all 1.5s ease;
+    transform: translateX(${props => props.slideIndex * -100 }vw);
+`;
+
+const Slide = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+`;
+
+const ImageContainer = styled.div`
+    height: 100%;
+    flex: 1;
+`;
+
+const Image = styled.img`
+    height: 80%;
+`;
+
+const InfoContainer = styled.div`
+    flex: 1;
+    padding: 50px;
+`;
+const Title = styled.h1`
+    font-size: 60px;
+`;
+
+const Desc = styled.p`
+    margin: 50px 0px;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 4px;
+`;
+
+const Button = styled.button`
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+`;
 
 const Slider = () => {
+    const [slideIndex, setSlideIndex] = useState(0);
+    const handleClick = (direction) => {
+            if(direction === "left") {
+                setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2)
+            }
+            else {
+                setSlideIndex(slideIndex < 2 ? slideIndex+1 : 0)
+            }
+    };
+
   return (
-    <div className="slider-container">
-        <div className="arrow" direction="left">
+    <Container>
+        <Arrow direction="left" onClick={()=>handleClick("left")}>
             <ArrowLeft/>
-        </div>
+        </Arrow>
 
-        <div className="slide-wrapper">
-            <div className="slide">
-                <div className="img-container">
-                <img src={sliderImg1} alt="slider" height='80%'/>
-                </div>
+        <Wrapper slideIndex={slideIndex}>
+            {sliderItems.map(item => (
+                <Slide key={item.id}>
+                <ImageContainer>
+                <Image src={item.img}/> 
+                </ImageContainer>
 
-                <div className="info-container">
-                    <h1 className="title">SUMMER SAL</h1>
-                    <p className="description">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS</p>
-                    <button className="info-button">SHOW NOW</button>
-                </div>
+                <InfoContainer>
+                    <Title>{item.title}</Title>
+                    <Desc>{item.desc}</Desc>
+                    <Button>SHOW NOW</Button>
+                </InfoContainer>
 
-             </div>
+             </Slide>
 
-             <div className="slide">
-                <div className="img-container">
-                <img src={sliderImg1} alt="slider" height='80%'/>
-                </div>
+            ))}
+            
+        </Wrapper>
 
-                <div className="info-container">
-                    <h1 className="title">SUMMER SAL</h1>
-                    <p className="description">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS</p>
-                    <button className="info-button">SHOW NOW</button>
-                </div>
-
-             </div>
-
-             <div className="slide">
-                <div className="img-container">
-                <img src={sliderImg1} alt="slider" height='80%'/>
-                </div>
-
-                <div className="info-container">
-                    <h1 className="title">SUMMER SAL</h1>
-                    <p className="description">DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS</p>
-                    <button className="info-button">SHOW NOW</button>
-                </div>
-
-             </div>
-
-        </div>
-
-        <div className="arrow" direction="right">
+        <Arrow direction="right" onClick={()=>handleClick("right")}>
             <ArrowRight/>
-        </div>
+        </Arrow>
 
-    </div>
+    </Container>
   )
 }
 

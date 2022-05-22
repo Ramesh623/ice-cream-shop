@@ -1,24 +1,83 @@
-import './Login.css';
+import styled from "styled-components"
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.5)
+        ),
+        url("https://wallpaperaccess.com/full/240306.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+`;
+
+const Wrapper = styled.div`
+  width: 25%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+`;
+
+const Title = styled.h1`
+  font-size: 25px;
+  font-weight: 400;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Input = styled.input`
+  flex: 1;
+  min-width: 40%;
+  margin: 10px 0px;
+  padding: 10px;
+  font-weight: 400;
+`;
+
+const Button = styled.button`
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: #99004d;
+  color: white;
+  cursor: pointer;
+  margin-left:30%;
+  font-weight: 500;
+  margin-bottom: 10px;
+`;
+
+const Link = styled.a`
+  margin: 5px 0px;
+  font-size: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 300;
+`;
+
+ 
 const Login = () => {
   return (
-    <div className='login-container'>
-        <div className='login-wrapper'>
-            <h1 className='login-title'>SIGN IN</h1>
-            <form action="register" className='login-form'>
-
-                <input className='login-input' type="text" placeholder='username'/>
-                <input className='login-input' type="text" placeholder='password'/> 
+    <Container>
+        <Wrapper>
+            <Title>SIGN IN</Title>
+            <Form>
+                <Input placeholder='username'/>
+                <Input placeholder='password'/> 
     
-                <button className='login-button'>LOGIN</button>
-                <a href="" className='login-link'>DO NOT YOU REMEMBER THE PASSWORD</a>
-                <a href="" className='login-link'>CREATE A NEW ACCOUNT</a>
-            </form>
-        </div>
+                <Button>LOGIN</Button>
 
-    </div>
+                <Link>DON'T YOU REMEMBER THE PASSWORD ?</Link>
+                <Link>CREATE A NEW ACCOUNT</Link>
+            </Form>
+        </Wrapper>
+
+    </Container>
 
   )
 }
 
-export default Login
+export default Login;

@@ -1,41 +1,97 @@
 import { Search, ShoppingCartOutlined } from '@mui/icons-material';
 import { Badge } from '@mui/material';
-import React from 'react';
-import './Navbar.css';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    height: 60px;
+`;
+
+const Wrapper = styled.div`
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+const Left = styled.div`
+    flex : 1 ;
+    display: flex;
+    align-items: center;
+`;
+
+const Language = styled.span`
+    font-size: 14px;  
+    cursor: pointer;
+`;
+
+const SearchContainer = styled.div`
+    border: 0.5px solid lightgray;
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    padding: 5px;
+`;
+
+const Input = styled.input`
+    border: none;
+    margin-right: 5px;
+`;
+
+const Center = styled.div`
+    flex: 1;
+    text-align: center;
+`;
+
+const Logo = styled.h1`
+    font-weight: bold;
+`;
+
+const Right = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+`;
+
+const MenuItem = styled.div`
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 50px;
+`;
 
 
 const Navbar = () => {
   return (
-    <div className = 'container'>
-        <div className='wrapper'>
-            <div className='left'>
-                <span className='language'></span>
-                <div className='searchContainer'>
-                    <input type="text" className='input' />
+    <Container>
+        <Wrapper>
+            <Left>
+                <Language></Language>
+                <SearchContainer>
+                    <Input/>
                     <Search style={{color: 'gray', fontSize : '16'}}/>
-                </div>
-            </div>
+                </SearchContainer>
+            </Left>
 
-            <div className='center'>
-                <h1 className='logo'>Mr. Ice Cream</h1>
-            </div>
+            <Center>
+                <Logo>Mr. Ice Cream</Logo>
+            </Center>
                 
-            <div className='right'>
-                <div className='menuItem'>REGISTER</div>
-                <div className='menuItem'>SIGN IN</div>
-                <div className='menuItem'>
+            <Right>
+                <MenuItem>REGISTER</MenuItem>
+                <MenuItem>SIGN IN</MenuItem>
+                <MenuItem>
                     <Badge badgeContent={4} color="primary">
                     <ShoppingCartOutlined color="action" />
                     </Badge>
-                </div>                
+                </MenuItem>                
 
 
-            </div>
+            </Right>
             
             
-        </div>
+        </Wrapper>
 
-    </div>
+    </Container>
   )
 }
 
