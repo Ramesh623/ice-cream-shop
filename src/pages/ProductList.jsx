@@ -5,6 +5,8 @@ import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div`
     display: flex;
@@ -43,15 +45,28 @@ const Option = styled.option`
 `;
 
 const ProductList = () => {
-  return (
+    const location = useLocation();
+    const cat = location.pathname.split("/")[2];
+    const [filters,setFilters] = useState({});
+    const [sort,setSort] = useState("newest");
+    
+    const handleFilters = (e) => {
+        const value = e.target.value;
+        setFilters({
+            ...filters,
+            [e.target.name]: value,
+        });
+    };
+
+    return (
     <Container>
         <Announcement/>
         <Navbar/>
-        <Title>Ice Creams</Title>
+        <Title>{cat}</Title>
         <FilterContainer>
             <Filter><FilterText>Filter Products :</FilterText>
-            <Select>
-                <Option disabled selected>Flavour</Option>
+            <Select name="flavour" onChange={handleFilters}>
+                <Option disabled>Flavour</Option>
                 <Option>Vanila</Option>
                 <Option>Chocolate</Option>
                 <Option>Cookies N' Cream</Option>
@@ -60,27 +75,27 @@ const ProductList = () => {
                 <Option>Buttered Pecan</Option>
             </Select>
 
-            <Select>
-                <Option disabled selected>Size</Option>
-                <Option>100 ml</Option>
-                <Option>150 ml</Option>
-                <Option>200 ml</Option>
-                <Option>300 ml</Option>
-                <Option>400 ml</Option>
+            <Select name="size" onChange={handleFilters}>
+                <Option disabled>Size</Option>
+                <Option>100ml</Option>
+                <Option>150ml</Option>
+                <Option>200ml</Option>
+                <Option>300ml</Option>
+                <Option>400ml</Option>
             </Select>
             
             </Filter>
             <Filter><FilterText>Sort Products :</FilterText>
-            <Select>
-                <Option selected>Newest</Option>
-                <Option>Price (asc)</Option>
-                <Option>Price (desc)</Option>
+            <Select onChange={(e) => setSort(e.target.value)}>
+                <Option value="newest">Newest</Option>
+                <Option value="asc">Price (asc)</Option>
+                <Option value="desc">Price (desc)</Option>
             </Select>
     
             </Filter>
             
         </FilterContainer>
-        <Products/>
+        <Products cat={cat} filters={filters} sort={sort}/>
         <Newsletter/>
         <Footer/>      
     </Container>

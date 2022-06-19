@@ -1,9 +1,12 @@
 import Sliderimage1 from '../src/Images/Sliderimg1.jpg';
 import Sliderimage2 from '../src/Images/Sliderimg2.jpg';
 import Sliderimage3 from '../src/Images/Sliderimg3.jpg';
-import cate1 from '../src/Images/Cateimg1.jpg';
-import cate2 from '../src/Images/Cateimg2.jpg';
-import cate3 from '../src/Images/Cateimg3.jpg';
+import cate1 from '../src/Images/cateimg8.jpg';
+import cate2 from '../src/Images/cateimg5.jpg';
+import cate3 from '../src/Images/cateimg6.jpg';
+
+
+
 import popularimg1 from '../src/Images/Popularimg1.png';
 
 
@@ -37,18 +40,20 @@ export const categories = [
     {
         id: 1,
         img: cate1,
-        title: "CATEGORY 1",
+        title: "Kids",
+        cat: "Kids"
     },
     {
         id: 2,
         img: cate2,
-        title: "CATEGORY 2",
-        
+        title: "Family",
+        cat: "Family"
     },
     {
         id: 3,
         img: cate3,
-        title: "CATEGORY 3",
+        title: "Lovers",
+        cat: "Lovers"
     },
 ];
 
